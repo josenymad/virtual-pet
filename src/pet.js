@@ -1,3 +1,5 @@
-function Pet() {};
+function pet(petName) {
+    this.name = petName
+};
 
-module.exports = Pet;
+module.exports = pet;
