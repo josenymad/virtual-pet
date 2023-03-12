@@ -1,12 +1,16 @@
-const pet = require('../src/pet');
+const Pet = require('../src/pet');
 
 describe('constructor', () => {
     it('returns an object', () => {
-        expect(new pet('Fido')).toBeInstanceOf(Object);
+        expect(new Pet('Max')).toBeInstanceOf(Object);
     });
 
     it('names your pet', () => {
-        expect(new pet('Fido').name).toBe('Fido');
-        expect(new pet('Cooper').name).toBe('Cooper');
+        expect(new Pet('Fido').name).toBe('Fido');
+        expect(new Pet('Cooper').name).toBe('Cooper');
+    });
+
+    it('pet has an initial age of 0', () => {
+        expect(new Pet('Lucy').age).toBe(0);
     });
 });

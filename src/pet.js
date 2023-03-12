@@ -1,5 +1,6 @@
-function pet(petName) {
-    this.name = petName
+function Pet(petName) {
+    this.name = petName,
+    this.age = 0
 };
 
-module.exports = pet;
+module.exports = Pet;
