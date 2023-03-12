@@ -18,5 +18,31 @@ describe('constructor', () => {
         const pet = new Pet('Lucky');
         pet.growUp();
         expect(pet.age).toBe(1);
+        pet.growUp();
+        expect(pet.age).toBe(2);
+    });
+
+    it('pet has an initial hunger of 0', () => {
+        expect(new Pet('Scooby').hunger).toBe(0);
+    });
+
+    it('pet growing up increases hunger by 5', () => {
+        const pet = new Pet('Max');
+        pet.growUp();
+        expect(pet.hunger).toBe(5);
+        pet.growUp();
+        expect(pet.hunger).toBe(10);
+    });
+
+    it('pet has an initial fitness of 10', () => {
+        expect(new Pet('Roger').fitness).toBe(10);
+    });
+
+    it('pet growing up decreases fitness by 3', () => {
+        const pet = new Pet('Pluto');
+        pet.growUp();
+        expect(pet.fitness).toBe(7);
+        pet.growUp();
+        expect(pet.fitness).toBe(4);
     });
 });
