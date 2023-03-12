@@ -14,7 +14,7 @@ describe('constructor', () => {
         expect(new Pet('Lucy').age).toBe(0);
     });
 
-    it('growUp', () => {
+    it('pet age increases by 1 year', () => {
         const pet = new Pet('Lucky');
         pet.growUp();
         expect(pet.age).toBe(1);
