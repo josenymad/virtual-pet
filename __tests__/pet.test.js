@@ -45,4 +45,15 @@ describe('constructor', () => {
         pet.growUp();
         expect(pet.fitness).toBe(4);
     });
+
+    it('walking pet increases fitness by 4', () => {
+        const pet = new Pet('Bella');
+        pet.growUp();
+        pet.walk();
+        expect(pet.fitness).toBe(10);
+        pet.growUp();
+        pet.growUp();
+        pet.walk();
+        expect(pet.fitness).toBe(8);
+    });
 });
