@@ -56,4 +56,13 @@ describe('constructor', () => {
         pet.walk();
         expect(pet.fitness).toBe(8);
     });
+
+    it('feeding pet decreases hunger by 3', () => {
+        const pet = new Pet('Charlie');
+        pet.growUp();
+        pet.feed();
+        expect(pet.hunger).toBe(2);
+        pet.feed();
+        expect(pet.hunger).toBe(0);
+    });
 });
