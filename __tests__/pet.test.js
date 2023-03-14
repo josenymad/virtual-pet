@@ -66,7 +66,7 @@ describe('constructor', () => {
         expect(pet.hunger).toBe(0);
     });
 
-    it('checking up on pet returns state', () => {
+    it('checking up on pet returns pet state', () => {
         const pet = new Pet('Fluffy');
         expect(pet.checkUp()).toBe('I feel great!');
         pet.growUp();
@@ -76,6 +76,19 @@ describe('constructor', () => {
         expect(pet.checkUp()).toBe('I need a walk');
         pet.hunger = 5;
         expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+    });
+
+    it('checks if the pet is alive', () => {
+        const pet = new Pet('Bruno');
+        expect(pet.isAlive()).toBeTruthy();
+        pet.fitness = 0;
+        expect(pet.isAlive()).toBeFalsy();
+        pet.walk();
+        pet.hunger = 10;
+        expect(pet.isAlive()).toBeFalsy();
+        pet.feed();
+        pet.age = 30;
+        expect(pet.isAlive()).toBeFalsy();
     });
 });
 
