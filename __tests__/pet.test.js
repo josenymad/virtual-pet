@@ -65,4 +65,20 @@ describe('constructor', () => {
         pet.feed();
         expect(pet.hunger).toBe(0);
     });
+
+    it('checking up on pet returns state', () => {
+        const pet = new Pet('Fluffy');
+        expect(pet.checkUp()).toBe('I feel great!');
+        pet.growUp();
+        expect(pet.checkUp()).toBe('I am hungry');
+        pet.feed();
+        pet.fitness = 3;
+        expect(pet.checkUp()).toBe('I need a walk');
+        pet.hunger = 5;
+        expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
+    });
 });
+
+/* to copy into node testing
+const Pet = require('./src/pet');
+const pet = new Pet('animal'); */ 

@@ -28,4 +28,19 @@ Pet.prototype.feed = function() {
     } else this.hunger = this.hunger;
 };
 
+Pet.prototype.checkUp = function() {
+    const hungry = 5;
+    const outOfShape = 3;
+    if (this.hunger >= hungry && this.fitness <= outOfShape) {
+        return 'I am hungry AND I need a walk';
+    }
+    if (this.hunger >= hungry) {
+        return 'I am hungry';
+    }
+    if (this.fitness <= outOfShape) {
+        return 'I need a walk';
+    }
+    return 'I feel great!';
+};
+
 module.exports = Pet;
