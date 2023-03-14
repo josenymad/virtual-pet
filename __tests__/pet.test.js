@@ -80,15 +80,15 @@ describe('constructor', () => {
 
     it('checks if the pet is alive', () => {
         const pet = new Pet('Bruno');
-        expect(pet.isAlive()).toBeTruthy();
+        expect(pet.isAlive).toBeTruthy();
         pet.fitness = 0;
-        expect(pet.isAlive()).toBeFalsy();
+        expect(pet.isAlive).toBeFalsy();
         pet.walk();
         pet.hunger = 10;
-        expect(pet.isAlive()).toBeFalsy();
+        expect(pet.isAlive).toBeFalsy();
         pet.feed();
         pet.age = 30;
-        expect(pet.isAlive()).toBeFalsy();
+        expect(pet.isAlive).toBeFalsy();
     });
 });
 

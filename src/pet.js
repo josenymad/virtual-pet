@@ -6,6 +6,24 @@ function Pet(petName) {
     this.fitness = initialFitness;
 };
 
+Pet.prototype = {
+    get isAlive() {
+    const unfit = 0;
+    const starving = 10;
+    const tooOld = 30;
+    if (this.fitness <= unfit) {
+        return false;
+    }
+    if (this.hunger >= starving) {
+        return false;
+    }
+    if (this.age >= tooOld) {
+        return false;
+    }
+    return true;
+}
+};
+
 Pet.prototype.growUp = function() {
     this.age += 1;
     this.hunger += 5;
@@ -41,22 +59,6 @@ Pet.prototype.checkUp = function() {
         return 'I need a walk';
     }
     return 'I feel great!';
-};
-
-Pet.prototype.isAlive = function() {
-    const unfit = 0;
-    const starving = 10;
-    const tooOld = 30;
-    if (this.fitness <= unfit) {
-        return false;
-    }
-    if (this.hunger >= starving) {
-        return false;
-    }
-    if (this.age >= tooOld) {
-        return false;
-    }
-    return true;
 };
 
 module.exports = Pet;
