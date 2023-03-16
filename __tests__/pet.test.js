@@ -1,32 +1,42 @@
 const Pet = require('../src/pet');
 
 describe('constructor', () => {
+
     it('returns an object', () => {
         expect(new Pet('Max')).toBeInstanceOf(Object);
     });
+});
+
+describe('naming pet', () => {
 
     it('names your pet', () => {
         expect(new Pet('Fido').name).toBe('Fido');
         expect(new Pet('Cooper').name).toBe('Cooper');
     });
+});
 
-    it('pet has an initial age of 0', () => {
+describe('getting older', () => {
+
+    it('has an initial age of 0', () => {
         expect(new Pet('Lucy').age).toBe(0);
     });
 
-    it('pet age increases by 1 year', () => {
+    it('growing up age increases age by 1 year', () => {
         const pet = new Pet('Lucky');
         pet.growUp();
         expect(pet.age).toBe(1);
         pet.growUp();
         expect(pet.age).toBe(2);
     });
+});
 
-    it('pet has an initial hunger of 0', () => {
+describe('getting unhealthier', () => {
+
+    it('has an initial hunger of 0', () => {
         expect(new Pet('Scooby').hunger).toBe(0);
     });
 
-    it('pet growing up increases hunger by 5', () => {
+    it('growing up increases hunger by 5', () => {
         const pet = new Pet('Max');
         pet.growUp();
         expect(pet.hunger).toBe(5);
@@ -34,30 +44,35 @@ describe('constructor', () => {
         expect(pet.hunger).toBe(10);
     });
 
-    it('pet has an initial fitness of 10', () => {
+    it('has an initial fitness of 10', () => {
         expect(new Pet('Roger').fitness).toBe(10);
     });
 
-    it('pet growing up decreases fitness by 3', () => {
+    it('growing up decreases fitness by 3', () => {
         const pet = new Pet('Pluto');
         pet.growUp();
         expect(pet.fitness).toBe(7);
         pet.growUp();
         expect(pet.fitness).toBe(4);
     });
+});
 
-    it('walking pet increases fitness by 4', () => {
+describe('keeping fit', () => {
+
+    it('walking increases fitness by 4', () => {
         const pet = new Pet('Bella');
-        pet.growUp();
+        pet.fitness = 9;
         pet.walk();
         expect(pet.fitness).toBe(10);
-        pet.growUp();
-        pet.growUp();
+        pet.fitness = 4;
         pet.walk();
         expect(pet.fitness).toBe(8);
     });
+});
 
-    it('feeding pet decreases hunger by 3', () => {
+describe('keeping fed', () => {
+
+    it('feeding decreases hunger by 3', () => {
         const pet = new Pet('Charlie');
         pet.growUp();
         pet.feed();
@@ -65,8 +80,11 @@ describe('constructor', () => {
         pet.feed();
         expect(pet.hunger).toBe(0);
     });
+});
 
-    it('checking up on pet returns pet state', () => {
+describe('checking up', () => {
+
+    it('checking up returns pet state', () => {
         const pet = new Pet('Fluffy');
         expect(pet.checkUp()).toBe('I feel great!');
         pet.growUp();
@@ -77,18 +95,50 @@ describe('constructor', () => {
         pet.hunger = 5;
         expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
     });
+});
+
+describe('death', () => {
 
     it('checks if the pet is alive', () => {
         const pet = new Pet('Bruno');
         expect(pet.isAlive).toBeTruthy();
         pet.fitness = 0;
         expect(pet.isAlive).toBeFalsy();
-        pet.walk();
-        pet.hunger = 10;
-        expect(pet.isAlive).toBeFalsy();
-        pet.feed();
+
+        const pet2 = new Pet('Bruno Jr');
+        pet2.hunger = 10;
+        expect(pet2.isAlive).toBeFalsy();
+
+        const pet3 = new Pet('Brunette');
+        pet3.age = 30;
+        expect(pet3.isAlive).toBeFalsy();
+    });
+});
+
+describe('guard clauses', () => {
+
+    it('checking up returns mortality', () => {
+        const pet = new Pet('Trixie');
+        pet.fitness = 0;
+        expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
+    });
+
+    it('checks if alive before growing up', () => {
+        const pet = new Pet('Fenton');
         pet.age = 30;
-        expect(pet.isAlive).toBeFalsy();
+        expect(() => pet.growUp()).toThrow('Your pet is no longer alive :(');
+    });
+
+    it('checks if alive before feeding', () => {
+        const pet = new Pet('Rex');
+        pet.hunger = 10;
+        expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
+    });
+
+    it('checks if alive before walking', () => {
+        const pet = new Pet('Garfield');
+        pet.fitness = 0;
+        expect(() => pet.feed()).toThrow('Your pet is no longer alive :(');
     });
 });
 
