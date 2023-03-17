@@ -117,7 +117,7 @@ describe('death', () => {
 
 describe('guard clauses', () => {
 
-    it('checking up returns mortality', () => {
+    it('check up returns mortality', () => {
         const pet = new Pet('Trixie');
         pet.fitness = 0;
         expect(() => pet.checkUp()).toThrow('Your pet is no longer alive :(');
