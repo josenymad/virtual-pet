@@ -142,6 +142,33 @@ describe('guard clauses', () => {
     });
 });
 
-/* to copy into node testing
+describe('having a baby', () => {
+
+    it('checks the children property is an array', () => {
+        const parent = new Pet('biggie');
+        expect(parent.children).toStrictEqual([]);
+    });
+
+    it('adopts child by adding to children property', () => {
+        const parent = new Pet('oldie');
+        const child = new Pet('whipper snapper');
+        parent.adoptChild(child);
+        expect(parent.children).toStrictEqual([child]);
+        const baby = new Pet('baby');
+        parent.adoptChild(baby);
+        expect(parent.children).toStrictEqual([child, baby]);
+    });
+
+    it('checks child is not able to adopt parent', () => {
+        const parent = new Pet('Big');
+        const child = new Pet('Small');
+        parent.adoptChild(child);
+        child.adoptChild(parent);
+        expect(child.adoptChild(parent)).toBe('Pets cannot adopt their own parents!');
+    });
+});
+
+
+/* to copy into node for testing
 const Pet = require('./src/pet');
 const pet = new Pet('animal'); */ 
