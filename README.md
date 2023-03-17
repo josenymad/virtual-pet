@@ -39,7 +39,7 @@
 
 <p align="center">If your pet unfortunately dies, have a think about the way you treated your pet. You can create another by entering `.exit` and then following the steps again from when you entered `node` on your terminal.</p> 
 
-<p align="center">Want to have two pets? Simply repeat this step</p>
+<p align="center">Want to have two pets? Simply repeat this step:</p>
 <p align="center"><strong>const pet = new Pet('pet name goes here')</strong></p>
 <p align="center">as many times as you'd like, making sure that you change the word after <em>const</em> with something like `pet2`.</p>
 <p align="center">Make sure to use the same word when you want to give that pet some commands and check that particular pet's properties!</p>
