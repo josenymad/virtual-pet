@@ -1,14 +1,12 @@
 const Pet = require('../src/pet');
 
 describe('constructor', () => {
-
     it('returns an object', () => {
         expect(new Pet('Max')).toBeInstanceOf(Object);
     });
 });
 
 describe('naming pet', () => {
-
     it('names your pet', () => {
         expect(new Pet('Fido').name).toBe('Fido');
         expect(new Pet('Cooper').name).toBe('Cooper');
@@ -16,7 +14,6 @@ describe('naming pet', () => {
 });
 
 describe('getting older', () => {
-
     it('has an initial age of 0', () => {
         expect(new Pet('Lucy').age).toBe(0);
     });
@@ -31,7 +28,6 @@ describe('getting older', () => {
 });
 
 describe('getting unhealthier', () => {
-
     it('has an initial hunger of 0', () => {
         expect(new Pet('Scooby').hunger).toBe(0);
     });
@@ -58,7 +54,6 @@ describe('getting unhealthier', () => {
 });
 
 describe('keeping fit', () => {
-
     it('walking increases fitness by 4', () => {
         const pet = new Pet('Bella');
         pet.fitness = 9;
@@ -71,7 +66,6 @@ describe('keeping fit', () => {
 });
 
 describe('keeping fed', () => {
-
     it('feeding decreases hunger by 3', () => {
         const pet = new Pet('Charlie');
         pet.growUp();
@@ -83,7 +77,6 @@ describe('keeping fed', () => {
 });
 
 describe('checking up', () => {
-
     it('checking up returns pet state', () => {
         const pet = new Pet('Fluffy');
         expect(pet.checkUp()).toBe('I feel great!');
@@ -98,7 +91,6 @@ describe('checking up', () => {
 });
 
 describe('death', () => {
-
     it('checks if the pet is alive', () => {
         const pet = new Pet('Bruno');
         expect(pet.isAlive).toBeTruthy();
@@ -116,7 +108,6 @@ describe('death', () => {
 });
 
 describe('guard clauses', () => {
-
     it('check up returns mortality', () => {
         const pet = new Pet('Trixie');
         pet.fitness = 0;
@@ -143,7 +134,6 @@ describe('guard clauses', () => {
 });
 
 describe('having a baby', () => {
-
     it('checks the children property is an array', () => {
         const parent = new Pet('biggie');
         expect(parent.children).toStrictEqual([]);
