@@ -41,7 +41,7 @@
 
 <p align="center">Want to have two pets? Simply repeat the step below as many times as you'd like, making sure that you change the word after <em>const</em> with something like `pet2`.</p>
 <p align="center"><strong>const pet2 = new Pet('pet name goes here')</strong></p>
-<p align="center">Make sure to use that same word when you want to give that pet some commands and check that particular pet's properties!</p>
+<p align="center"><strong><em>Make sure to use that same word when you want to give that pet some commands and check that particular pet's properties!</em></strong></p>
 
 <p align="center">As a final feature, your pets can adopt children with this command:</p>
 
