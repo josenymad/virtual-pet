@@ -23,6 +23,7 @@ Pet.prototype.growUp = function() {
     this.age += 1;
     this.hunger += 5;
     this.fitness -= 3;
+    return 'Back in my day...vets are not what they used to be';
 };
 
 Pet.prototype.walk = function() {
@@ -34,6 +35,7 @@ Pet.prototype.walk = function() {
     if (this.fitness > maxFitness) {
         this.fitness = maxFitness;
     } else this.fitness = this.fitness;
+    return 'About time we went outside';
 };
 
 Pet.prototype.feed = function() {
@@ -45,6 +47,7 @@ Pet.prototype.feed = function() {
     if (this.hunger < minHunger) {
         this.hunger = minHunger;
     } else this.hunger = this.hunger;
+    return 'Pretty tasty that, got anymore?';
 };
 
 Pet.prototype.checkUp = function() {
@@ -70,6 +73,7 @@ Pet.prototype.adoptChild = function(child) {
         return 'Pets cannot adopt their own parents!';
     }
     this.children.push(child);
+    return 'Welcome to the family!'
 }
 
 module.exports = Pet;

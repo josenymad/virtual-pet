@@ -45,5 +45,5 @@
 
 <p align="center">As a final feature, your pets can adopt children with this command:</p>
 
-<p align="center"li><strong>adoptChild(insert whichever pet is being adopted here)</strong></p>
+<p align="center"li><strong><em>pet</em>.adoptChild(insert whichever pet is being adopted here)</strong></p>
 

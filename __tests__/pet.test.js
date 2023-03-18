@@ -158,6 +158,29 @@ describe('having a baby', () => {
     });
 });
 
+describe('speaks back when given commands', () => {
+    it('replies when taken for a walk', () => {
+        const pet = new Pet('Cheeky');
+        expect(pet.walk()).toBe('About time we went outside');
+    });
+
+    it('replies when being fed', () => {
+        const pet = new Pet('Greedy');
+        expect(pet.feed()).toBe('Pretty tasty that, got anymore?');
+    });
+
+    it('replies when getting old', () => {
+        const pet = new Pet('Grumpy');
+        expect(pet.growUp()).toBe('Back in my day...vets are not what they used to be');
+    });
+
+    it('replies when adopting a child', () => {
+        const parent = new Pet('Broody');
+        const child = new Pet('Newborn');
+        expect(parent.adoptChild(child)).toBe('Welcome to the family!');
+    });
+});
+
 
 /* to copy into node for testing
 const Pet = require('./src/pet');
