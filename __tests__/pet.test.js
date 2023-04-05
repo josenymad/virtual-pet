@@ -22,6 +22,7 @@ describe('getting older', () => {
         const pet = new Pet('Lucky');
         pet.growUp();
         expect(pet.age).toBe(1);
+
         pet.growUp();
         expect(pet.age).toBe(2);
     });
@@ -36,6 +37,7 @@ describe('getting unhealthier', () => {
         const pet = new Pet('Max');
         pet.growUp();
         expect(pet.hunger).toBe(5);
+
         pet.growUp();
         expect(pet.hunger).toBe(10);
     });
@@ -48,6 +50,7 @@ describe('getting unhealthier', () => {
         const pet = new Pet('Pluto');
         pet.growUp();
         expect(pet.fitness).toBe(7);
+
         pet.growUp();
         expect(pet.fitness).toBe(4);
     });
@@ -56,51 +59,71 @@ describe('getting unhealthier', () => {
 describe('keeping fit', () => {
     it('walking increases fitness by 4', () => {
         const pet = new Pet('Bella');
-        pet.fitness = 9;
-        pet.walk();
-        expect(pet.fitness).toBe(10);
         pet.fitness = 4;
         pet.walk();
         expect(pet.fitness).toBe(8);
+    });
+
+    it('does not increase fitness by more than 10', () => {
+        const pet = new Pet('Ella');
+        pet.fitness = 9;
+        pet.walk();
+        expect(pet.fitness).toBe(10);
     });
 });
 
 describe('keeping fed', () => {
     it('feeding decreases hunger by 3', () => {
         const pet = new Pet('Charlie');
-        pet.growUp();
+        pet.hunger = 5;
         pet.feed();
         expect(pet.hunger).toBe(2);
+
         pet.feed();
         expect(pet.hunger).toBe(0);
     });
 });
 
 describe('checking up', () => {
-    it('checking up returns pet state', () => {
+    it('checks it feels great when created or when none of the below are true', () => {
         const pet = new Pet('Fluffy');
         expect(pet.checkUp()).toBe('I feel great!');
-        pet.growUp();
+    });
+
+    it('checks it is hungry when hunger is 5 or more', () => {
+        const pet = new Pet('Fluffo');
+        pet.hunger = 5;
         expect(pet.checkUp()).toBe('I am hungry');
-        pet.feed();
+    });
+
+    it('checks it needs walk if fitness is 3 or less', () => {
+        const pet = new Pet('Fluffe');
         pet.fitness = 3;
         expect(pet.checkUp()).toBe('I need a walk');
+    });
+
+    it('checks it needs a walk and is hungry when both of the above are true', () => {
+        const pet = new Pet('Poor pet');
         pet.hunger = 5;
+        pet.fitness = 3;
         expect(pet.checkUp()).toBe('I am hungry AND I need a walk');
     });
 });
 
 describe('death', () => {
-    it('checks if the pet is alive', () => {
+    it('checks if the pet is dead: low fitness', () => {
         const pet = new Pet('Bruno');
-        expect(pet.isAlive).toBeTruthy();
         pet.fitness = 0;
         expect(pet.isAlive).toBeFalsy();
+    });
 
+    it('checks if the pet is dead: high hunger', () => {
         const pet2 = new Pet('Bruno Jr');
         pet2.hunger = 10;
         expect(pet2.isAlive).toBeFalsy();
+    });
 
+    it('checks if the pet is dead: old age', () => {
         const pet3 = new Pet('Brunette');
         pet3.age = 30;
         expect(pet3.isAlive).toBeFalsy();
@@ -144,6 +167,7 @@ describe('having a baby', () => {
         const child = new Pet('whipper snapper');
         parent.adoptChild(child);
         expect(parent.children).toStrictEqual([child]);
+        
         const baby = new Pet('baby');
         parent.adoptChild(baby);
         expect(parent.children).toStrictEqual([child, baby]);
@@ -180,8 +204,3 @@ describe('speaks back when given commands', () => {
         expect(parent.adoptChild(child)).toBe('Welcome to the family!');
     });
 });
-
-
-/* to copy into node for testing
-const Pet = require('./src/pet');
-const pet = new Pet('animal'); */ 

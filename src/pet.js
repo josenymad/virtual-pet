@@ -9,11 +9,12 @@ function Pet(petName) {
 
 Pet.prototype = {
     get isAlive() {
-    const unfit = 0;
-    const starving = 10;
-    const tooOld = 30;
-    return this.age < tooOld && this.hunger < starving && this.fitness > unfit;
-}
+        const unfit = 0;
+        const starving = 10;
+        const tooOld = 30;
+
+        return this.age < tooOld && this.hunger < starving && this.fitness > unfit;
+    }
 };
 
 Pet.prototype.growUp = function() {
@@ -23,6 +24,7 @@ Pet.prototype.growUp = function() {
     this.age += 1;
     this.hunger += 5;
     this.fitness -= 3;
+
     return 'Back in my day...vets are not what they used to be';
 };
 
@@ -35,6 +37,7 @@ Pet.prototype.walk = function() {
     if (this.fitness > maxFitness) {
         this.fitness = maxFitness;
     } else this.fitness = this.fitness;
+
     return 'About time we went outside';
 };
 
@@ -47,6 +50,7 @@ Pet.prototype.feed = function() {
     if (this.hunger < minHunger) {
         this.hunger = minHunger;
     } else this.hunger = this.hunger;
+    
     return 'Pretty tasty that, got anymore?';
 };
 
@@ -56,7 +60,7 @@ Pet.prototype.checkUp = function() {
     if (!this.isAlive) {
         throw new Error('Your pet is no longer alive :(');
     }
-    if (this.hunger >= hungry && this.fitness <= outOfShape) {
+    if (this.hunger >= hungry && this.fitness <= outOfShape) {  
         return 'I am hungry AND I need a walk';
     }
     if (this.hunger >= hungry) {
@@ -65,6 +69,7 @@ Pet.prototype.checkUp = function() {
     if (this.fitness <= outOfShape) {
         return 'I need a walk';
     }
+
     return 'I feel great!';
 };
 
@@ -73,6 +78,7 @@ Pet.prototype.adoptChild = function(child) {
         return 'Pets cannot adopt their own parents!';
     }
     this.children.push(child);
+
     return 'Welcome to the family!'
 }
 
