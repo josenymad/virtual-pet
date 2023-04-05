@@ -8,7 +8,7 @@
 
 <h2>Installation</h2>
 
-<p>Make sure you have Node.js installed, you can do so on this link: <a>https://nodejs.org/en/download</a></p>
+<p>Make sure you have Node.js installed, you can do so on this <a href="https://nodejs.org/en/download">link</a>.</p>
 
 <p>Once Node.js is installed, clone this repository on your machine via your terminal and navigate to the virtual-pet directory.</p>
 
